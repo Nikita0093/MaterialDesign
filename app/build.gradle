@@ -8,6 +8,8 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+
     compileSdk 32
 
     defaultConfig {
@@ -18,6 +20,12 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes.each {
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("apikey.properties").newDataInputStream())
+        def apiKey = properties.getProperty("nasa_api_key", "")
+        it.buildConfigField "String", "NASA_API_KEY", apiKey
     }
 
     buildTypes {
