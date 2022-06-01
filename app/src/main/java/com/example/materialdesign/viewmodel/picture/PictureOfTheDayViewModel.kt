@@ -23,12 +23,12 @@ class PictureOfTheDayViewModel(
 
 
     fun sendRequest() {
-        liveData.postValue(PictureOfTheDayAppState.Loading(null))
+        //liveData.postValue(PictureOfTheDayAppState.Loading(null))
         pictureOfTheDayRetrofitImpl.getRetrofit().getPictureOfTheDay(BuildConfig.NASA_API_KEY)
             .enqueue(callback)
     }
 
-    val callback = object : Callback<PictureOfTheDayResponseData> {
+    private val callback = object : Callback<PictureOfTheDayResponseData> {
         override fun onResponse(
             call: Call<PictureOfTheDayResponseData>,
             response: Response<PictureOfTheDayResponseData>
