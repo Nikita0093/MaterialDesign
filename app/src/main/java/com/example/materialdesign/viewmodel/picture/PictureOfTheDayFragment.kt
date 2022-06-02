@@ -56,12 +56,12 @@ class PictureOfTheDayFragment : Fragment() {
             }
 
             is PictureOfTheDayAppState.Loading -> {
-                //binding.progressBar.visibility = View.VISIBLE
+                binding.progressBar.visibility = View.VISIBLE
             }
 
             is PictureOfTheDayAppState.Success -> {
                 binding.progressBar.visibility = View.INVISIBLE
-                binding.imageView.load(pictureOfTheDayAppState.pictureOfTheDayResponseData.hdurl) {
+                binding.imageView.load(pictureOfTheDayAppState.pictureOfTheDayResponseData.url) {
                     placeholder(R.drawable.nasa_logo)
                 }
             }

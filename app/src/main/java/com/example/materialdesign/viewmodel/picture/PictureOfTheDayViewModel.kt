@@ -11,16 +11,15 @@ class PictureOfTheDayViewModel(
     private val liveData: MutableLiveData<PictureOfTheDayAppState> = MutableLiveData(),
     private var pictureOfTheDayRepository: PictureOfTheDayRepository = PictureOfTheDayRetrofitImpl()
 ) : ViewModel() {
-    val pictureOfTheDayFragment = PictureOfTheDayFragment()
 
     fun getLiveData(): LiveData<PictureOfTheDayAppState> {
         return liveData
     }
 
 
-    fun getPictureOfTheDayByViewModel(){
+    fun getPictureOfTheDayByViewModel() {
         liveData.postValue(PictureOfTheDayAppState.Loading)
-        pictureOfTheDayRepository.getPictureOfTheDay(object : Callback{
+        pictureOfTheDayRepository.getPictureOfTheDay(object : Callback {
             override fun onResponse(pictureOfTheDayResponseData: PictureOfTheDayResponseData) {
                 liveData.postValue(PictureOfTheDayAppState.Success(pictureOfTheDayResponseData))
             }
