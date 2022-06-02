@@ -1,17 +1,14 @@
 package com.example.materialdesign.viewmodel.picture
 
-import android.opengl.Visibility
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
-import coil.transform.CircleCropTransformation
-import coil.transform.RoundedCornersTransformation
 import com.example.materialdesign.R
 import com.example.materialdesign.databinding.FragmentPictureOfTheDayBinding
 import com.google.android.material.snackbar.Snackbar
@@ -36,11 +33,12 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer {
             renderData(it)
 
         })
-        viewModel.sendRequest()
+        viewModel.getPictureOfTheDayByViewModel()
 
     }
 
@@ -54,10 +52,11 @@ class PictureOfTheDayFragment : Fragment() {
                     "Ошибка: $pictureOfTheDayAppState",
                     Snackbar.LENGTH_LONG
                 ).show()
+                Log.d("@@@", "$pictureOfTheDayAppState")
             }
 
             is PictureOfTheDayAppState.Loading -> {
-                binding.progressBar.visibility = View.VISIBLE
+                //binding.progressBar.visibility = View.VISIBLE
             }
 
             is PictureOfTheDayAppState.Success -> {
