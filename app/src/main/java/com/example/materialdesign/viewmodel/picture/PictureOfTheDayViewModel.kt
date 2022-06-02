@@ -23,8 +23,9 @@ class PictureOfTheDayViewModel(
 
 
     fun sendRequest() {
-        //liveData.postValue(PictureOfTheDayAppState.Loading(null))
-        pictureOfTheDayRetrofitImpl.getRetrofit().getPictureOfTheDay(BuildConfig.NASA_API_KEY)
+        liveData.postValue(PictureOfTheDayAppState.Loading(null))
+        pictureOfTheDayRetrofitImpl.getRetrofit()
+            .getPictureOfTheDay(BuildConfig.NASA_API_KEY)
             .enqueue(callback)
     }
 

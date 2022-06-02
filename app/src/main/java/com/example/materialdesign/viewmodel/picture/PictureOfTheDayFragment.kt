@@ -1,19 +1,24 @@
 package com.example.materialdesign.viewmodel.picture
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
+import coil.transform.CircleCropTransformation
+import coil.transform.RoundedCornersTransformation
+import com.example.materialdesign.R
 import com.example.materialdesign.databinding.FragmentPictureOfTheDayBinding
 import com.google.android.material.snackbar.Snackbar
 
 class PictureOfTheDayFragment : Fragment() {
     private var _binding: FragmentPictureOfTheDayBinding? = null
-    val binding: FragmentPictureOfTheDayBinding
+    private val binding: FragmentPictureOfTheDayBinding
         get() = _binding!!
 
     override fun onCreateView(
@@ -43,19 +48,26 @@ class PictureOfTheDayFragment : Fragment() {
         when (pictureOfTheDayAppState) {
 
             is PictureOfTheDayAppState.Error -> {
-                Snackbar.make(requireView(), "Ошибка", Snackbar.LENGTH_LONG).show()
+                binding.progressBar.visibility = View.INVISIBLE
+                Snackbar.make(
+                    requireView(),
+                    "Ошибка: $pictureOfTheDayAppState",
+                    Snackbar.LENGTH_LONG
+                ).show()
             }
 
             is PictureOfTheDayAppState.Loading -> {
-
+                binding.progressBar.visibility = View.VISIBLE
             }
 
             is PictureOfTheDayAppState.Success -> {
-                binding.imageView.load(pictureOfTheDayAppState.pictureOfTheDayResponseData.hdurl)
+                binding.progressBar.visibility = View.INVISIBLE
+                binding.imageView.load(pictureOfTheDayAppState.pictureOfTheDayResponseData.hdurl) {
+                    placeholder(R.drawable.nasa_logo)
+                }
             }
-
-
         }
+
 
     }
 
