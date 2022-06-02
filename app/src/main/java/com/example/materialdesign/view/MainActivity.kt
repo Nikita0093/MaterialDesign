@@ -3,6 +3,7 @@ package com.example.materialdesign.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.materialdesign.R
+import com.example.materialdesign.second_fragment.MenuFragment
 import com.example.materialdesign.viewmodel.picture.PictureOfTheDayFragment
 
 class MainActivity : AppCompatActivity() {
@@ -11,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         if (savedInstanceState==null){
-            supportFragmentManager.beginTransaction().replace(R.id.mainContainer,PictureOfTheDayFragment.newInstance()).commit()
+            supportFragmentManager.beginTransaction().replace(R.id.mainContainer,MenuFragment.newInstance()).commit()
 
         }
     }
