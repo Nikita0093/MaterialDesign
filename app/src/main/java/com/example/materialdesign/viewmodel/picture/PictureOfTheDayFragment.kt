@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.materialdesign.R
 import com.example.materialdesign.databinding.FragmentPictureOfTheDayBinding
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 
 class PictureOfTheDayFragment : Fragment() {
@@ -40,6 +41,9 @@ class PictureOfTheDayFragment : Fragment() {
         })
         viewModel.getPictureOfTheDayByViewModel()
 
+        val bottomSheetBehavior = BottomSheetBehavior.from(binding.lifeHack.bottomSheetContainer)
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
+
     }
 
     private fun renderData(pictureOfTheDayAppState: PictureOfTheDayAppState) {
@@ -61,7 +65,9 @@ class PictureOfTheDayFragment : Fragment() {
 
             is PictureOfTheDayAppState.Success -> {
                 binding.progressBar.visibility = View.INVISIBLE
-                binding.imageView.load(pictureOfTheDayAppState.pictureOfTheDayResponseData.url) {
+                binding.lifeHack.bottomSheetTitle.text = pictureOfTheDayAppState.pictureOfTheDayResponseData.title
+                binding.lifeHack.bottomSheetExplanation.text = pictureOfTheDayAppState.pictureOfTheDayResponseData.explanation
+                binding.imageView.load(pictureOfTheDayAppState.pictureOfTheDayResponseData.hdurl) {
                     placeholder(R.drawable.nasa_logo)
                 }
             }
