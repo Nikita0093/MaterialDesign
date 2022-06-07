@@ -2,13 +2,13 @@
     <!-- Base application theme. -->
     <style name="Theme.MaterialDesign" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#512D92</item>
+        <item name="colorPrimary">#CAC5D3</item>
         <item name="colorPrimaryVariant">#292727</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">#150EEF</item>
+        <item name="colorSecondary">#CAC5D3</item>
         <item name="colorSecondaryVariant">@color/white</item>
-        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?colorPrimary</item>
         <!-- Customize your theme here. -->

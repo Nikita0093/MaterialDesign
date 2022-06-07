@@ -66,7 +66,7 @@ class PictureOfTheDayFragment : Fragment() {
                 .replace(R.id.mainContainer, WikiFragment.newInstance()).addToBackStack(" ")
                 .commit()
 
-            R.id.app_bar_fav -> Toast.makeText(requireContext(), "Чукча", Toast.LENGTH_LONG).show()
+            R.id.app_bar_fav -> Toast.makeText(requireContext(), "Test", Toast.LENGTH_LONG).show()
         }
         return super.onOptionsItemSelected(item)
 
