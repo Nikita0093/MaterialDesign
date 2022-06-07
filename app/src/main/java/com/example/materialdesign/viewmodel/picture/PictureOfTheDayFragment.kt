@@ -2,15 +2,15 @@ package com.example.materialdesign.viewmodel.picture
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.materialdesign.R
 import com.example.materialdesign.databinding.FragmentPictureOfTheDayBinding
+import com.example.materialdesign.view.MainActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 
@@ -44,6 +44,32 @@ class PictureOfTheDayFragment : Fragment() {
         val bottomSheetBehavior = BottomSheetBehavior.from(binding.lifeHack.bottomSheetContainer)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
 
+        setActionBar()
+
+    }
+
+    private fun setActionBar() {
+        (requireActivity() as MainActivity).setSupportActionBar(binding.bottomAppBar)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_bottom_bar, menu)
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+            R.id.app_bar_search -> requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.mainContainer, WikiFragment.newInstance()).addToBackStack(" ")
+                .commit()
+
+            R.id.app_bar_fav -> Toast.makeText(requireContext(), "Чукча", Toast.LENGTH_LONG).show()
+        }
+        return super.onOptionsItemSelected(item)
+
     }
 
     private fun renderData(pictureOfTheDayAppState: PictureOfTheDayAppState) {
@@ -65,8 +91,10 @@ class PictureOfTheDayFragment : Fragment() {
 
             is PictureOfTheDayAppState.Success -> {
                 binding.progressBar.visibility = View.INVISIBLE
-                binding.lifeHack.bottomSheetTitle.text = pictureOfTheDayAppState.pictureOfTheDayResponseData.title
-                binding.lifeHack.bottomSheetExplanation.text = pictureOfTheDayAppState.pictureOfTheDayResponseData.explanation
+                binding.lifeHack.bottomSheetTitle.text =
+                    pictureOfTheDayAppState.pictureOfTheDayResponseData.title
+                binding.lifeHack.bottomSheetExplanation.text =
+                    pictureOfTheDayAppState.pictureOfTheDayResponseData.explanation
                 binding.imageView.load(pictureOfTheDayAppState.pictureOfTheDayResponseData.hdurl) {
                     placeholder(R.drawable.nasa_logo)
                 }
