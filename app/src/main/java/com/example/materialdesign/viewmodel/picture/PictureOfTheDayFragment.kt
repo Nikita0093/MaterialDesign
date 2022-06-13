@@ -20,6 +20,7 @@ import com.google.android.material.snackbar.Snackbar
 class PictureOfTheDayFragment : Fragment() {
 
     var isMain = true
+    var themePosition = true
 
     private var _binding: FragmentPictureOfTheDayBinding? = null
     private val binding: FragmentPictureOfTheDayBinding
@@ -122,10 +123,26 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
+
+
         when (item.itemId) {
             R.id.app_bar_search -> requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.mainContainer, WikiFragment.newInstance()).addToBackStack(" ")
                 .commit()
+
+            R.id.app_bar_settings->
+
+                if (themePosition){
+                    themePosition = false
+                    requireActivity().setTheme(R.style.MyСolorBlind_Theme)
+
+
+
+                }else if (!themePosition){
+                    themePosition = true
+                    requireActivity().setTheme(R.style.Theme_MaterialDesign)
+                }
+
 
             R.id.app_bar_fav -> Toast.makeText((requireContext() as MainActivity), "Test", Toast.LENGTH_LONG).show()
 
