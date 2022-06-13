@@ -1,13 +1,12 @@
 package com.example.materialdesign.second_fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.materialdesign.R
 import com.example.materialdesign.databinding.FragmentMenuBinding
-import com.example.materialdesign.databinding.FragmentPictureOfTheDayBinding
 import com.example.materialdesign.viewmodel.picture.PictureOfTheDayFragment
 import com.example.materialdesign.viewmodel.picture.WikiFragment
 
@@ -29,7 +28,6 @@ class MenuFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setOnClickListener()
     }
-
 
 
     private fun setOnClickListener() {

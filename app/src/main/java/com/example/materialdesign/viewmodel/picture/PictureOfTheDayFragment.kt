@@ -10,11 +10,13 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.materialdesign.R
 import com.example.materialdesign.databinding.FragmentPictureOfTheDayBinding
+import com.example.materialdesign.view.BottomNaviDrawerFragment
 import com.example.materialdesign.view.MainActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 
 class PictureOfTheDayFragment : Fragment() {
+
     private var _binding: FragmentPictureOfTheDayBinding? = null
     private val binding: FragmentPictureOfTheDayBinding
         get() = _binding!!
@@ -46,6 +48,7 @@ class PictureOfTheDayFragment : Fragment() {
 
         setActionBar()
 
+
     }
 
     private fun setActionBar() {
@@ -66,8 +69,15 @@ class PictureOfTheDayFragment : Fragment() {
                 .replace(R.id.mainContainer, WikiFragment.newInstance()).addToBackStack(" ")
                 .commit()
 
-            R.id.app_bar_fav -> Toast.makeText(requireContext(), "Test", Toast.LENGTH_LONG).show()
+            R.id.app_bar_fav -> Toast.makeText((requireContext() as MainActivity), "Test", Toast.LENGTH_LONG).show()
+
+
+            android.R.id.home -> {
+                BottomNaviDrawerFragment.newInstance().show(requireActivity().supportFragmentManager, " ")
+            }
+
         }
+
         return super.onOptionsItemSelected(item)
 
     }
