@@ -1,11 +1,10 @@
 package com.example.materialdesign.view
 
 import android.media.MediaPlayer
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.materialdesign.R
 import com.example.materialdesign.second_fragment.MenuFragment
-import com.example.materialdesign.viewmodel.picture.PictureOfTheDayFragment
 
 class MainActivity : AppCompatActivity() {
     var music = MediaPlayer()
@@ -22,7 +21,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
     }
 
     override fun onResume() {
@@ -30,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         val mediaPlayer = MediaPlayer.create(this, R.raw.track_two)
         music = mediaPlayer
         music.start()
+
+
     }
 
     override fun onStop() {

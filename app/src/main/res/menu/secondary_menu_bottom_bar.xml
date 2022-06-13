@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/secondary_app_bar_one"
+        android:icon="@drawable/ic_secondary_bottom_one"
+        android:title="secondary_menu"
+        app:showAsAction="ifRoom" />
+</menu>

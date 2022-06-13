@@ -4,8 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/space"
-    >
+    android:background="@drawable/space">
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group"
+        style="@style/Widget.MaterialComponents.Chip.Action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_today"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Today">
+
+        </com.google.android.material.chip.Chip>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_yesterday"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yesterday">
+
+        </com.google.android.material.chip.Chip>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_the_day_before_yesterday"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The Day Before Yesterday">
+
+        </com.google.android.material.chip.Chip>
+
+    </com.google.android.material.chip.ChipGroup>
 
 
     <com.example.materialdesign.utils.EquilateralImageView
@@ -43,8 +80,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="?colorSecondary"
         app:layout_anchor="@id/bottom_app_bar"
-        app:srcCompat="@drawable/ic_plus"
-        />
+        app:srcCompat="@drawable/ic_plus" />
 
 
     <LinearLayout

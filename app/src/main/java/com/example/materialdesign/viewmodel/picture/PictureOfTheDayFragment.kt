@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -12,10 +13,13 @@ import com.example.materialdesign.R
 import com.example.materialdesign.databinding.FragmentPictureOfTheDayBinding
 import com.example.materialdesign.view.BottomNaviDrawerFragment
 import com.example.materialdesign.view.MainActivity
+import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 
 class PictureOfTheDayFragment : Fragment() {
+
+    var isMain = true
 
     private var _binding: FragmentPictureOfTheDayBinding? = null
     private val binding: FragmentPictureOfTheDayBinding
@@ -47,8 +51,62 @@ class PictureOfTheDayFragment : Fragment() {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
 
         setActionBar()
+        setFabListener()
+        setDataNasa()
 
 
+    }
+
+    private fun setDataNasa() {
+
+
+        binding.chipToday.setOnClickListener {
+            Toast.makeText((requireContext() as MainActivity), "Test4", Toast.LENGTH_LONG).show()
+            viewModel.getPictureOfTheDayByViewModel()
+        }
+
+
+        binding.chipYesterday.setOnClickListener {
+            Toast.makeText((requireContext() as MainActivity), "Test5", Toast.LENGTH_LONG).show()
+            viewModel.getPictureOfTheDayByViewModel()
+        }
+
+
+        binding.chipTheDayBeforeYesterday.setOnClickListener {
+            Toast.makeText((requireContext() as MainActivity), "Test6", Toast.LENGTH_LONG).show()
+            viewModel.getPictureOfTheDayByViewModel()
+        }
+    }
+
+    private fun setFabListener() {
+        binding.fab.setOnClickListener {
+            if (isMain) {
+                isMain = false
+                binding.bottomAppBar.navigationIcon = null
+                binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
+                binding.bottomAppBar.replaceMenu(R.menu.secondary_menu_bottom_bar)
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_back
+                    )
+                )
+
+
+            } else {
+                isMain = true
+                binding.bottomAppBar.navigationIcon =
+                    (ContextCompat.getDrawable(requireContext(), R.drawable.ic_navigation))
+                binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
+                binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_plus
+                    )
+                )
+            }
+        }
     }
 
     private fun setActionBar() {
@@ -74,6 +132,9 @@ class PictureOfTheDayFragment : Fragment() {
 
             android.R.id.home -> {
                 BottomNaviDrawerFragment.newInstance().show(requireActivity().supportFragmentManager, " ")
+            }
+            R.id.secondary_app_bar_one -> {
+                Toast.makeText((requireContext() as MainActivity), "Test2", Toast.LENGTH_LONG).show()
             }
 
         }
