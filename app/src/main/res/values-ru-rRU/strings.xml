@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MaterialDesign</string>
+    <string name="welcome_nasa">Добро пожаловать в NASA</string>
+    <string name="search">Поиск</string>
+    <string name="settings">Настройки</string>
+    <string name="favourite">Избранное</string>
+    <string name="wiki">Добро пожаловать в WIKI</string>
+    <string name="search_wiki">Найти в Википедии</string>
+    <string name="wiki_helper_text">Поищите термин в википедии</string>
+    <string name="photo_of_the_day_stub">Фотография Дня</string>
+    <string name="the_day_before_yesterday">Позавчера</string>
+    <string name="yesterday">Вчера</string>
+    <string name="today">Сегодня</string>
+    <string name="second_screen">Второй экран</string>
+    <string name="first_screen">Первый экран</string>
+    <string name="secondary_menu">Второе меню</string>
+</resources>

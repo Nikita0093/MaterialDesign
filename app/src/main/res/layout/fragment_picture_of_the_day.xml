@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="Today">
+            android:text="@string/today">
 
         </com.google.android.material.chip.Chip>
 
@@ -29,7 +29,7 @@
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Yesterday">
+            android:text="@string/yesterday">
 
         </com.google.android.material.chip.Chip>
 
@@ -38,7 +38,7 @@
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="The Day Before Yesterday">
+            android:text="@string/the_day_before_yesterday">
 
         </com.google.android.material.chip.Chip>
 

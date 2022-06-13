@@ -30,13 +30,13 @@ class BottomNaviDrawerFragment : BottomSheetDialogFragment() {
         binding.navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.navigation_one -> {
-                    Toast.makeText(requireContext(), "На  экран 1", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "Test8", Toast.LENGTH_LONG).show()
 
                     dismiss()
                 }
 
                 R.id.navigation_two -> {
-                    Toast.makeText(requireContext(), "На  экран 2", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "Test9", Toast.LENGTH_LONG).show()
 
                     dismiss()
                 }

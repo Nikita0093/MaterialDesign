@@ -3,6 +3,6 @@
     <item
         android:id="@+id/secondary_app_bar_one"
         android:icon="@drawable/ic_secondary_bottom_one"
-        android:title="secondary_menu"
+        android:title="@string/secondary_menu"
         app:showAsAction="ifRoom" />
 </menu>
