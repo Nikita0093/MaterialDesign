@@ -12,15 +12,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class PictureOfTheDayRetrofitImpl : PictureOfTheDayRepository {
     private val nasaBaseUrl = KEY_NASA_DOMAIN_BASE_URL
-    private var nasaData = "2022-06-13"
 
 
-    override fun getPictureOfTheDay(callback: PictureOfTheDayViewModel.Callback) {
+    override fun getPictureOfTheDay(date: String, callback: PictureOfTheDayViewModel.Callback) {
+
+
         val pictureOfTheDayApi = Retrofit.Builder()
             .baseUrl(nasaBaseUrl)
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
             .build().create(PictureOfTheDayApi::class.java)
-        pictureOfTheDayApi.getPictureOfTheDay(nasaData,BuildConfig.NASA_API_KEY)
+        pictureOfTheDayApi.getPictureOfTheDay(date, BuildConfig.NASA_API_KEY)
             .enqueue(object : Callback<PictureOfTheDayResponseData> {
                 override fun onResponse(
                     call: Call<PictureOfTheDayResponseData>,
@@ -40,7 +41,5 @@ class PictureOfTheDayRetrofitImpl : PictureOfTheDayRepository {
 
     }
 
-    fun getData(a:String){
-        nasaData = a
-    }
+
 }

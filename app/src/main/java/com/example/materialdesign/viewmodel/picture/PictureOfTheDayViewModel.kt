@@ -17,9 +17,9 @@ class PictureOfTheDayViewModel(
     }
 
 
-    fun getPictureOfTheDayByViewModel() {
+    fun getPictureOfTheDayByViewModel(date:String) {
         liveData.postValue(PictureOfTheDayAppState.Loading)
-        pictureOfTheDayRepository.getPictureOfTheDay(object : Callback {
+        pictureOfTheDayRepository.getPictureOfTheDay(date,object : Callback {
             override fun onResponse(pictureOfTheDayResponseData: PictureOfTheDayResponseData) {
                 liveData.postValue(PictureOfTheDayAppState.Success(pictureOfTheDayResponseData))
             }

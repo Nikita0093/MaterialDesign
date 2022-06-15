@@ -11,11 +11,14 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.materialdesign.R
 import com.example.materialdesign.databinding.FragmentPictureOfTheDayBinding
+import com.example.materialdesign.repository.PictureOfTheDayRetrofitImpl
 import com.example.materialdesign.view.BottomNaviDrawerFragment
 import com.example.materialdesign.view.MainActivity
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
+import java.text.SimpleDateFormat
+import java.util.*
 
 class PictureOfTheDayFragment : Fragment() {
 
@@ -46,7 +49,7 @@ class PictureOfTheDayFragment : Fragment() {
             renderData(it)
 
         })
-        viewModel.getPictureOfTheDayByViewModel()
+        viewModel.getPictureOfTheDayByViewModel(takeDateToday())
 
         val bottomSheetBehavior = BottomSheetBehavior.from(binding.lifeHack.bottomSheetContainer)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
@@ -58,24 +61,52 @@ class PictureOfTheDayFragment : Fragment() {
 
     }
 
+    fun takeDateYesterday(): String {
+        val currentDate = Calendar.getInstance()
+        currentDate.add(Calendar.DAY_OF_MONTH, -1)
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        dateFormat.timeZone = TimeZone.getTimeZone("EST")
+        return dateFormat.format(currentDate.time)
+
+    }
+
+    fun takeDateToday(): String {
+        val currentDate = Calendar.getInstance()
+        currentDate.add(Calendar.DAY_OF_MONTH, 0)
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        dateFormat.timeZone = TimeZone.getTimeZone("EST")
+        return dateFormat.format(currentDate.time)
+
+    }
+
+    fun takeDateTheDayBeforeYesterday(): String {
+        val currentDate = Calendar.getInstance()
+        currentDate.add(Calendar.DAY_OF_MONTH, -2)
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        dateFormat.timeZone = TimeZone.getTimeZone("EST")
+        return dateFormat.format(currentDate.time)
+
+    }
+
+
     private fun setDataNasa() {
 
 
         binding.chipToday.setOnClickListener {
-            Toast.makeText((requireContext() as MainActivity), "Test4", Toast.LENGTH_LONG).show()
-            viewModel.getPictureOfTheDayByViewModel()
+
+            viewModel.getPictureOfTheDayByViewModel(takeDateToday())
         }
 
 
         binding.chipYesterday.setOnClickListener {
             Toast.makeText((requireContext() as MainActivity), "Test5", Toast.LENGTH_LONG).show()
-            viewModel.getPictureOfTheDayByViewModel()
+            viewModel.getPictureOfTheDayByViewModel(takeDateYesterday())
         }
 
 
         binding.chipTheDayBeforeYesterday.setOnClickListener {
             Toast.makeText((requireContext() as MainActivity), "Test6", Toast.LENGTH_LONG).show()
-            viewModel.getPictureOfTheDayByViewModel()
+            viewModel.getPictureOfTheDayByViewModel(takeDateTheDayBeforeYesterday())
         }
     }
 
@@ -130,9 +161,11 @@ class PictureOfTheDayFragment : Fragment() {
                 .replace(R.id.mainContainer, WikiFragment.newInstance()).addToBackStack(" ")
                 .commit()
 
-            R.id.app_bar_settings->
+            R.id.app_bar_settings-> requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.mainContainer, SettingsFragment.newInstance()).addToBackStack(" ")
+                .commit()
 
-                if (themePosition){
+               /* if (themePosition){
                     themePosition = false
                     requireActivity().setTheme(R.style.MyСolorBlind_Theme)
 
@@ -142,6 +175,8 @@ class PictureOfTheDayFragment : Fragment() {
                     themePosition = true
                     requireActivity().setTheme(R.style.Theme_MaterialDesign)
                 }
+
+                */
 
 
             R.id.app_bar_fav -> Toast.makeText((requireContext() as MainActivity), "Test", Toast.LENGTH_LONG).show()
