@@ -7,10 +7,11 @@ import com.example.materialdesign.R
 import com.example.materialdesign.second_fragment.MenuFragment
 
 class MainActivity : AppCompatActivity() {
-    var music = MediaPlayer()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.Theme_MaterialDesign)
         setContentView(R.layout.activity_main)
 
         if (savedInstanceState == null) {
@@ -21,25 +22,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-    }
-
-    override fun onResume() {
-        super.onResume()
-        val mediaPlayer = MediaPlayer.create(this, R.raw.track_two)
-        music = mediaPlayer
-        music.start()
-
-
-    }
-
-    override fun onStop() {
-        super.onStop()
-        music.stop()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        music.stop()
     }
 
 }

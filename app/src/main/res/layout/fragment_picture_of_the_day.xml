@@ -6,43 +6,43 @@
     android:layout_height="match_parent"
     android:background="@drawable/space">
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chip_group"
-        style="@style/Widget.MaterialComponents.Chip.Action"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:singleSelection="true">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_today"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
+        <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
+            android:layout_height="?actionBarSize"
+            android:tag="today"
             android:text="@string/today">
 
-        </com.google.android.material.chip.Chip>
+        </com.google.android.material.tabs.TabItem>
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_yesterday"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
+        <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="?actionBarSize"
+            android:tag="yesterday"
             android:text="@string/yesterday">
 
-        </com.google.android.material.chip.Chip>
+        </com.google.android.material.tabs.TabItem>
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_the_day_before_yesterday"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
+        <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="?actionBarSize"
+            android:tag="the_day_before_yesterday"
             android:text="@string/the_day_before_yesterday">
 
-        </com.google.android.material.chip.Chip>
+        </com.google.android.material.tabs.TabItem>
 
-    </com.google.android.material.chip.ChipGroup>
+
+    </com.google.android.material.tabs.TabLayout>
 
 
     <com.example.materialdesign.utils.EquilateralImageView

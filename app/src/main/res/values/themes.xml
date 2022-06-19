@@ -17,11 +17,20 @@
 
         <!-- Customize your theme here. -->
         <item name="superColor">@color/black</item>
+
+
     </style>
 
     <style name="MyСolorBlind_Theme" parent="Theme.MaterialDesign">
-        <item name="colorPrimary">@color/black</item>
-        <item name="colorOnSecondary">@color/color_green</item>
+        <item name="colorPrimary">#504A4A</item>
+        <item name="colorOnSecondary">#238523</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="colorSecondaryVariant">#238523</item>
+        <item name="colorSecondary">#504A4A</item>
+        <item name="android:statusBarColor">?colorPrimary</item>
+
+
+       <item name="android:textViewStyle">@style/MyColorBlindTextAppearance</item>
 
     </style>
 </resources>

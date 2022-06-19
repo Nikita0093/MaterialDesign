@@ -11,12 +11,12 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.materialdesign.R
 import com.example.materialdesign.databinding.FragmentPictureOfTheDayBinding
-import com.example.materialdesign.repository.PictureOfTheDayRetrofitImpl
 import com.example.materialdesign.view.BottomNaviDrawerFragment
 import com.example.materialdesign.view.MainActivity
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.tabs.TabLayout
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -33,7 +33,6 @@ class PictureOfTheDayFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentPictureOfTheDayBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -44,6 +43,7 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer {
             renderData(it)
@@ -91,23 +91,27 @@ class PictureOfTheDayFragment : Fragment() {
 
     private fun setDataNasa() {
 
-
-        binding.chipToday.setOnClickListener {
-
-            viewModel.getPictureOfTheDayByViewModel(takeDateToday())
-        }
-
-
-        binding.chipYesterday.setOnClickListener {
-            Toast.makeText((requireContext() as MainActivity), "Test5", Toast.LENGTH_LONG).show()
-            viewModel.getPictureOfTheDayByViewModel(takeDateYesterday())
-        }
+        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when (tab?.position) {
+                    0 -> viewModel.getPictureOfTheDayByViewModel(takeDateToday())
+                    1 -> viewModel.getPictureOfTheDayByViewModel(takeDateYesterday())
+                    2 -> viewModel.getPictureOfTheDayByViewModel(takeDateTheDayBeforeYesterday())
+                }
 
 
-        binding.chipTheDayBeforeYesterday.setOnClickListener {
-            Toast.makeText((requireContext() as MainActivity), "Test6", Toast.LENGTH_LONG).show()
-            viewModel.getPictureOfTheDayByViewModel(takeDateTheDayBeforeYesterday())
-        }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+
+            }
+        })
+
+
     }
 
     private fun setFabListener() {
@@ -155,38 +159,43 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
 
-
         when (item.itemId) {
             R.id.app_bar_search -> requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.mainContainer, WikiFragment.newInstance()).addToBackStack(" ")
                 .commit()
 
-            R.id.app_bar_settings-> requireActivity().supportFragmentManager.beginTransaction()
+            R.id.app_bar_settings -> requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.mainContainer, SettingsFragment.newInstance()).addToBackStack(" ")
                 .commit()
 
-               /* if (themePosition){
-                    themePosition = false
-                    requireActivity().setTheme(R.style.MyСolorBlind_Theme)
+            /* if (themePosition){
+                 themePosition = false
+                 requireActivity().setTheme(R.style.MyСolorBlind_Theme)
 
 
 
-                }else if (!themePosition){
-                    themePosition = true
-                    requireActivity().setTheme(R.style.Theme_MaterialDesign)
-                }
+             }else if (!themePosition){
+                 themePosition = true
+                 requireActivity().setTheme(R.style.Theme_MaterialDesign)
+             }
 
-                */
+             */
 
 
-            R.id.app_bar_fav -> Toast.makeText((requireContext() as MainActivity), "Test", Toast.LENGTH_LONG).show()
+            R.id.app_bar_fav -> Toast.makeText(
+                (requireContext() as MainActivity),
+                "Test",
+                Toast.LENGTH_LONG
+            ).show()
 
 
             android.R.id.home -> {
-                BottomNaviDrawerFragment.newInstance().show(requireActivity().supportFragmentManager, " ")
+                BottomNaviDrawerFragment.newInstance()
+                    .show(requireActivity().supportFragmentManager, " ")
             }
             R.id.secondary_app_bar_one -> {
-                Toast.makeText((requireContext() as MainActivity), "Test2", Toast.LENGTH_LONG).show()
+                Toast.makeText((requireContext() as MainActivity), "Test2", Toast.LENGTH_LONG)
+                    .show()
             }
 
         }

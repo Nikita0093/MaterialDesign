@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MyNormalTextAppearance" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/cherry_cream_soda</item>
+        <item name="android:textSize">14sp</item>
+
+
+    </style>
+
+    <style name="MyColorBlindTextAppearance" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/cherry_cream_soda</item>
+        <item name="android:textSize">14sp</item>
+
+
+    </style>
+
+
+</resources>

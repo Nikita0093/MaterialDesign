@@ -17,4 +17,8 @@
     <string name="today">Today</string>
     <string name="yesterday">Yesterday</string>
     <string name="the_day_before_yesterday">The Day Before Yesterday</string>
+    <string name="normal_theme">Normal Theme</string>
+    <string name="colorblind_theme">Colorblind Theme</string>
+    <string name="stop" translatable="false">Stop</string>
+    <string name="play" translatable="false">Play</string>
 </resources>
