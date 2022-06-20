@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
+import com.example.materialdesign.BuildConfig
 import com.example.materialdesign.databinding.FragmentEarthBinding
 import com.example.materialdesign.viewmodel.picture.PictureOfTheDayViewModel
 
@@ -54,8 +55,16 @@ class EarthFragment : Fragment() {
 
 
             is EarthCameraAppState.Success -> {
-                binding.earthImageView.load(earthCameraAppState.earthCameraResponseData.image)
                 binding.earthTextView.text = earthCameraAppState.earthCameraResponseData.caption
+
+                val strDate = earthCameraAppState.earthCameraResponseData.date.split(" ").first()
+                val image =earthCameraAppState.earthCameraResponseData.image
+                val url = "https://api.nasa.gov/EPIC/archive/natural/" +
+                        strDate.replace("-","/",true) +
+                        "/png/" +
+                        "$image" +
+                        ".png?api_key=${BuildConfig.NASA_API_KEY}"
+                binding.earthImageView.load(url)
             }
 
 
