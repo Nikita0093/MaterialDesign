@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import coil.load
 import com.example.materialdesign.R
 import com.example.materialdesign.databinding.FragmentSettingsBinding
+import com.example.materialdesign.view.MainActivity
 import com.google.android.material.tabs.TabLayout
 
 

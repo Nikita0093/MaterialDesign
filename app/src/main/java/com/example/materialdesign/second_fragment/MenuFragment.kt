@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.materialdesign.R
 import com.example.materialdesign.databinding.FragmentMenuBinding
+import com.example.materialdesign.lesson3.viewpager.ViewPagerApiFragment
 import com.example.materialdesign.viewmodel.picture.PictureOfTheDayFragment
 import com.example.materialdesign.viewmodel.picture.WikiFragment
 
@@ -78,7 +79,7 @@ class MenuFragment : Fragment() {
     private fun setOnClickListener() {
         binding.buttonNasa.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.mainContainer, PictureOfTheDayFragment.newInstance())
+                .replace(R.id.mainContainer, ViewPagerApiFragment.newInstance())
                 .addToBackStack(" ").commit()
         }
         binding.buttonWiki.setOnClickListener {
