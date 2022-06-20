@@ -44,7 +44,7 @@ class ViewPagerApiFragment : Fragment() {
             }
 
             override fun onPageSelected(position: Int) {
-                when (position) {
+                /*when (position) {
                     0 -> {
                         binding.pageOne.setImageResource(R.drawable.ic_dot_main)
                         binding.pageTwo.setImageResource(R.drawable.ic_dot_other)
@@ -64,6 +64,8 @@ class ViewPagerApiFragment : Fragment() {
 
 
                 }
+
+                 */
             }
 
             override fun onPageScrollStateChanged(state: Int) {

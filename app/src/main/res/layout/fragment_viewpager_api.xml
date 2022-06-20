@@ -9,6 +9,7 @@
         android:id="@+id/viewPagerTab"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -20,49 +21,24 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/mainViewPager"
         android:layout_width="match_parent"
-        android:layout_height="700dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        android:layout_height="670dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewPagerTab">
 
     </androidx.viewpager.widget.ViewPager>
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navi_app_menu">
 
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/pageOne"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            app:srcCompat="@drawable/ic_dot_main">
-
-        </androidx.appcompat.widget.AppCompatImageView>
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/pageTwo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            app:srcCompat="@drawable/ic_dot_other">
-
-        </androidx.appcompat.widget.AppCompatImageView>
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/pageThree"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            app:srcCompat="@drawable/ic_dot_other">
-
-        </androidx.appcompat.widget.AppCompatImageView>
-
-    </LinearLayout>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
