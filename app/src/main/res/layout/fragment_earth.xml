@@ -8,7 +8,7 @@
 
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/appCompatImageView"
+        android:id="@+id/earthImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,6 +18,26 @@
         tools:layout_editor_absoluteX="0dp">
 
     </androidx.appcompat.widget.AppCompatImageView>
+
+    <TextView
+        android:id="@+id/earthTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:textColor="?colorSecondaryVariant"
+        android:textColorHint="@color/white"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/earthImageView"
+        app:layout_constraintVertical_bias="0.811"
+        tools:hint="тут будет текст">
+
+    </TextView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

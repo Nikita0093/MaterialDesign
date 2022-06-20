@@ -1,6 +1,6 @@
 package com.example.materialdesign.viewmodel.picture
 
-import com.example.materialdesign.repository.PictureOfTheDayResponseData
+import com.example.materialdesign.repository_picture_of_the_day.PictureOfTheDayResponseData
 
 sealed class PictureOfTheDayAppState{
     data class Success (val pictureOfTheDayResponseData: PictureOfTheDayResponseData): PictureOfTheDayAppState()

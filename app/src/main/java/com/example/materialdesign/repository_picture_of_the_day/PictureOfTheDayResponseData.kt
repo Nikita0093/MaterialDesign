@@ -1,4 +1,4 @@
-package com.example.materialdesign.repository
+package com.example.materialdesign.repository_picture_of_the_day
 
 
 import com.google.gson.annotations.SerializedName

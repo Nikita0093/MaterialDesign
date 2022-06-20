@@ -3,9 +3,9 @@ package com.example.materialdesign.viewmodel.picture
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.materialdesign.repository.PictureOfTheDayRepository
-import com.example.materialdesign.repository.PictureOfTheDayResponseData
-import com.example.materialdesign.repository.PictureOfTheDayRetrofitImpl
+import com.example.materialdesign.repository_picture_of_the_day.PictureOfTheDayRepository
+import com.example.materialdesign.repository_picture_of_the_day.PictureOfTheDayResponseData
+import com.example.materialdesign.repository_picture_of_the_day.PictureOfTheDayRetrofitImpl
 
 class PictureOfTheDayViewModel(
     private val liveData: MutableLiveData<PictureOfTheDayAppState> = MutableLiveData(),

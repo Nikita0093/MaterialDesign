@@ -3,7 +3,7 @@ package com.example.materialdesign.lesson3.viewpager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.example.materialdesign.lesson3.EarthFragment
+import com.example.materialdesign.viewmodel_earth.EarthFragment
 import com.example.materialdesign.lesson3.MarsFragment
 import com.example.materialdesign.lesson3.SolarSystemFragment
 import com.example.materialdesign.viewmodel.picture.PictureOfTheDayFragment
