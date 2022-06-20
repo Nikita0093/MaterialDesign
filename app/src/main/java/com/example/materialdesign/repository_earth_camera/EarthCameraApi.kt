@@ -7,9 +7,9 @@ import retrofit2.http.Query
 
 interface EarthCameraApi {
 
-    @GET (KEY_EPIC_ENDPOINT)
+    @GET(KEY_EPIC_ENDPOINT)
 
     fun getEarthPicture(
-        @Query ("api_key") apikey: String
-    ): Call <List<EarthCameraResponseData>>
+        @Query("api_key") apikey: String
+    ): Call<List<EarthCameraResponseData>>
 }

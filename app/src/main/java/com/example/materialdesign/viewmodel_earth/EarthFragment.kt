@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.materialdesign.BuildConfig
 import com.example.materialdesign.databinding.FragmentEarthBinding
-import com.example.materialdesign.viewmodel.picture.PictureOfTheDayViewModel
+import com.google.android.material.snackbar.Snackbar
 
 
 class EarthFragment : Fragment() {
@@ -47,28 +47,36 @@ class EarthFragment : Fragment() {
     private fun renderData(earthCameraAppState: EarthCameraAppState) {
         when (earthCameraAppState) {
 
-            is EarthCameraAppState.Error -> {}
+            is EarthCameraAppState.Error -> {
+                Snackbar.make(
+                    requireView(),
+                    "Ошибка: $earthCameraAppState",
+                    Snackbar.LENGTH_LONG
+                ).show()
+            }
 
 
             EarthCameraAppState.Loading -> {}
 
 
-
             is EarthCameraAppState.Success -> {
                 binding.earthTextView.text = earthCameraAppState.earthCameraResponseData.caption
-
-                val strDate = earthCameraAppState.earthCameraResponseData.date.split(" ").first()
-                val image =earthCameraAppState.earthCameraResponseData.image
-                val url = "https://api.nasa.gov/EPIC/archive/natural/" +
-                        strDate.replace("-","/",true) +
-                        "/png/" +
-                        "$image" +
-                        ".png?api_key=${BuildConfig.NASA_API_KEY}"
-                binding.earthImageView.load(url)
+                loadImage(earthCameraAppState)
             }
 
 
         }
+    }
+
+    private fun loadImage(earthCameraAppState: EarthCameraAppState.Success) {
+        val strDate = earthCameraAppState.earthCameraResponseData.date.split(" ").first()
+        val image = earthCameraAppState.earthCameraResponseData.image
+        val url = "https://api.nasa.gov/EPIC/archive/natural/" +
+                strDate.replace("-", "/", true) +
+                "/png/" +
+                "$image" +
+                ".png?api_key=${BuildConfig.NASA_API_KEY}"
+        binding.earthImageView.load(url)
     }
 
 

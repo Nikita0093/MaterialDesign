@@ -53,7 +53,7 @@ class PictureOfTheDayRetrofitImpl : PictureOfTheDayRepository, EarthCameraReposi
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
             .build().create(EarthCameraApi::class.java)
         pictureOfTheEarth.getEarthPicture(BuildConfig.NASA_API_KEY)
-            .enqueue(object : Callback <List<EarthCameraResponseData>> {
+            .enqueue(object : Callback<List<EarthCameraResponseData>> {
                 override fun onResponse(
                     call: Call<List<EarthCameraResponseData>>,
                     response: Response<List<EarthCameraResponseData>>

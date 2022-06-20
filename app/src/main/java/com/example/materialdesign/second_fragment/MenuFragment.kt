@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import com.example.materialdesign.R
 import com.example.materialdesign.databinding.FragmentMenuBinding
 import com.example.materialdesign.lesson3.viewpager.ViewPagerApiFragment
-import com.example.materialdesign.viewmodel.picture.PictureOfTheDayFragment
 import com.example.materialdesign.viewmodel.picture.WikiFragment
 
 

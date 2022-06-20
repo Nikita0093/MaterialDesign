@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.materialdesign.repository_earth_camera.EarthCameraRepository
 import com.example.materialdesign.repository_earth_camera.EarthCameraResponseData
 import com.example.materialdesign.repository_picture_of_the_day.PictureOfTheDayRetrofitImpl
+import kotlin.random.Random
 
 class EarthCameraViewModel(
     private val liveData: MutableLiveData<EarthCameraAppState> = MutableLiveData(),
@@ -19,9 +20,10 @@ class EarthCameraViewModel(
 
     fun getEarthPictureByViewModel() {
         //liveData.postValue(EarthCameraAppState.Loading)
-        pictureOfEarth.getPictureOfTheEarth(object: Callback{
+        pictureOfEarth.getPictureOfTheEarth(object : Callback {
             override fun onResponse(pictureOfEarth: List<EarthCameraResponseData>) {
-                liveData.postValue(EarthCameraAppState.Success(pictureOfEarth.last()))
+                val randomIndex = (0..100).random()
+                liveData.postValue(EarthCameraAppState.Success(pictureOfEarth[randomIndex]))
             }
 
             override fun onFailure(e: Throwable) {
