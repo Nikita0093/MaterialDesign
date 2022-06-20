@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.materialdesign.BuildConfig
+import com.example.materialdesign.R
 import com.example.materialdesign.databinding.FragmentEarthBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -76,7 +77,9 @@ class EarthFragment : Fragment() {
                 "/png/" +
                 "$image" +
                 ".png?api_key=${BuildConfig.NASA_API_KEY}"
-        binding.earthImageView.load(url)
+        binding.earthImageView.load(url){
+            placeholder(R.drawable.bg_earth)
+        }
     }
 
 
