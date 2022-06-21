@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.example.materialdesign.repository_earth_camera.EarthCameraRepository
 import com.example.materialdesign.repository_earth_camera.EarthCameraResponseData
 import com.example.materialdesign.repository_picture_of_the_day.PictureOfTheDayRetrofitImpl
-import kotlin.random.Random
 
 class EarthCameraViewModel(
     private val liveData: MutableLiveData<EarthCameraAppState> = MutableLiveData(),

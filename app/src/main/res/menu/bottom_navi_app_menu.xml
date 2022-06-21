@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/page_1"
+        android:id="@+id/bottom_app_earth"
         android:enabled="true"
         android:icon="@drawable/ic_earth"
         android:title="Earth">
 
     </item>
     <item
-        android:id="@+id/page_2"
+        android:id="@+id/bottom_app_mars"
         android:enabled="true"
         android:icon="@drawable/ic_mars"
         android:title="Mars">
@@ -16,7 +16,7 @@
     </item>
 
     <item
-        android:id="@+id/page_3"
+        android:id="@+id/bottom_app_solar"
         android:enabled="true"
         android:icon="@drawable/ic_solar_system"
         android:title="Solar">

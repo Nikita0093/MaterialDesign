@@ -77,7 +77,7 @@ class EarthFragment : Fragment() {
                 "/png/" +
                 "$image" +
                 ".png?api_key=${BuildConfig.NASA_API_KEY}"
-        binding.earthImageView.load(url){
+        binding.earthImageView.load(url) {
             placeholder(R.drawable.bg_earth)
         }
     }

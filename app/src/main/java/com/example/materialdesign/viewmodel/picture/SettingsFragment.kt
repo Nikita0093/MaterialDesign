@@ -45,9 +45,11 @@ class SettingsFragment : Fragment() {
     fun setSettingsPosition() {
         settingsPosition = if (settingsPosition) {
             binding.settingsImage.load(R.drawable.original)
+            binding.normalTheme.isChecked = true
             false
         } else {
             binding.settingsImage.load(R.drawable.colorblind)
+            binding.colorblindTheme.isChecked = true
             true
         }
 
