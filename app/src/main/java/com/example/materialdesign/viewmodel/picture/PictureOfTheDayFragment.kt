@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.materialdesign.R
 import com.example.materialdesign.databinding.FragmentPictureOfTheDayBinding
+import com.example.materialdesign.lesson_4_layots.LayoutsFragment
 import com.example.materialdesign.view.BottomNaviDrawerFragment
 import com.example.materialdesign.view.MainActivity
 import com.google.android.material.bottomappbar.BottomAppBar
@@ -182,11 +183,10 @@ class PictureOfTheDayFragment : Fragment() {
              */
 
 
-            R.id.app_bar_fav -> Toast.makeText(
-                (requireContext() as MainActivity),
-                "Test",
-                Toast.LENGTH_LONG
-            ).show()
+            R.id.app_bar_fav ->
+                Toast.makeText((requireContext() as MainActivity), "Test2", Toast.LENGTH_LONG)
+                    .show()
+
 
 
             android.R.id.home -> {

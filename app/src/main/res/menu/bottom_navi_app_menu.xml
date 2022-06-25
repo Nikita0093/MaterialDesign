@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/bottom_app_earth"
+        android:id="@+id/bottom_app_layouts"
         android:enabled="true"
-        android:icon="@drawable/ic_earth"
-        android:title="Earth">
+        android:icon="@drawable/ic_layouts"
+        android:title="@string/layouts">
 
     </item>
     <item
         android:id="@+id/bottom_app_mars"
         android:enabled="true"
         android:icon="@drawable/ic_mars"
-        android:title="Mars">
+        android:title="@string/mars">
 
     </item>
 
@@ -19,7 +19,7 @@
         android:id="@+id/bottom_app_solar"
         android:enabled="true"
         android:icon="@drawable/ic_solar_system"
-        android:title="Solar">
+        android:title="@string/solar">
 
     </item>
 

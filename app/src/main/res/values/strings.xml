@@ -21,4 +21,11 @@
     <string name="colorblind_theme">Colorblind Theme</string>
     <string name="stop" translatable="false">Stop</string>
     <string name="play" translatable="false">Play</string>
+    <string name="layouts" translatable="false">Layouts</string>
+    <string name="constraint" translatable="false">Constraint</string>
+    <string name="coordinator" translatable="false">Coordinator</string>
+    <string name="motion" translatable="false">Motion</string>
+    <string name="earth" translatable="false">Earth</string>
+    <string name="mars" translatable="false">Mars</string>
+    <string name="solar" translatable="false">Solar</string>
 </resources>

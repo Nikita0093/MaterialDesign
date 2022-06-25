@@ -9,7 +9,7 @@ import com.example.materialdesign.R
 import com.example.materialdesign.databinding.FragmentViewpagerApiBinding
 import com.example.materialdesign.lesson3.MarsFragment
 import com.example.materialdesign.lesson3.SolarSystemFragment
-import com.example.materialdesign.viewmodel_earth.EarthFragment
+import com.example.materialdesign.lesson_4_layots.LayoutsFragment
 
 
 class ViewPagerApiFragment : Fragment() {
@@ -42,11 +42,10 @@ class ViewPagerApiFragment : Fragment() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
 
             when (item.itemId) {
-                R.id.bottom_app_earth -> requireActivity().supportFragmentManager.beginTransaction()
+                R.id.bottom_app_layouts -> requireActivity().supportFragmentManager.beginTransaction()
                     .replace(
                         R.id.mainContainer,
-                        EarthFragment.newInstance()
-                    ).addToBackStack(" ").commit()
+                        LayoutsFragment.newInstance()).addToBackStack(" ").commit()
 
                 R.id.bottom_app_mars -> requireActivity().supportFragmentManager.beginTransaction()
                     .replace(

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottom_navi_constraint"
+        android:enabled="true"
+        android:icon="@drawable/ic_constraint"
+        android:title="@string/constraint">
+
+    </item>
+    <item
+        android:id="@+id/bottom_navi_coordinator"
+        android:enabled="true"
+        android:icon="@drawable/ic_coordinator"
+        android:title="@string/coordinator">
+
+    </item>
+
+    <item
+        android:id="@+id/bottom_navi_motion"
+        android:enabled="true"
+        android:icon="@drawable/ic_motion"
+        android:title="@string/motion">
+
+    </item>
+
+</menu>
