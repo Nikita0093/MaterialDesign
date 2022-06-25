@@ -9,7 +9,7 @@ import com.example.materialdesign.R
 import com.example.materialdesign.databinding.FragmentViewpagerApiBinding
 import com.example.materialdesign.lesson3.MarsFragment
 import com.example.materialdesign.lesson3.SolarSystemFragment
-import com.example.materialdesign.lesson_4_layots.LayoutsFragment
+import com.example.materialdesign.lesson_4_layouts.LayoutsFragment
 
 
 class ViewPagerApiFragment : Fragment() {

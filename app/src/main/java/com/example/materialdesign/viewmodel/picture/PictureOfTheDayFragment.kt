@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.materialdesign.R
 import com.example.materialdesign.databinding.FragmentPictureOfTheDayBinding
-import com.example.materialdesign.lesson_4_layots.LayoutsFragment
 import com.example.materialdesign.view.BottomNaviDrawerFragment
 import com.example.materialdesign.view.MainActivity
 import com.google.android.material.bottomappbar.BottomAppBar
