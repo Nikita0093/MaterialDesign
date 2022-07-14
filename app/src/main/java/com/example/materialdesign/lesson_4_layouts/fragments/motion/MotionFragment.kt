@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.materialdesign.databinding.FragmentMotionBinding
+import com.example.materialdesign.databinding.FragmentMotionEndBinding
 
 
 class MotionFragment : Fragment() {
 
 
-    private var _binding: FragmentMotionBinding? = null
-    private val binding: FragmentMotionBinding
+    private var _binding: FragmentMotionEndBinding? = null
+    private val binding: FragmentMotionEndBinding
         get() = _binding!!
 
 
@@ -21,7 +21,7 @@ class MotionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentMotionBinding.inflate(inflater, container, false)
+        _binding = FragmentMotionEndBinding.inflate(inflater, container, false)
         return binding.root
     }
 

@@ -41,19 +41,19 @@ class LayoutsFragment : Fragment() {
 
                 R.id.bottom_navi_constraint -> {
                     navigationTo(ConstraintFragment.newInstance())
-                    Toast.makeText(requireContext(), "One", Toast.LENGTH_SHORT).show()
+
                     true
                 }
 
                 R.id.bottom_navi_coordinator -> {
                     navigationTo(CoordinatorFragment.newInstance())
-                    Toast.makeText(requireContext(), "Two", Toast.LENGTH_SHORT).show()
+
                     true
                 }
 
                 R.id.bottom_navi_motion -> {
                     navigationTo(MotionFragment.newInstance())
-                    Toast.makeText(requireContext(), "Three", Toast.LENGTH_SHORT).show()
+
                     true
                 }
                 else -> true
