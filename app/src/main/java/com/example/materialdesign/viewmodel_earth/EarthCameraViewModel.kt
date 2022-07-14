@@ -21,7 +21,7 @@ class EarthCameraViewModel(
         //liveData.postValue(EarthCameraAppState.Loading)
         pictureOfEarth.getPictureOfTheEarth(object : Callback {
             override fun onResponse(pictureOfEarth: List<EarthCameraResponseData>) {
-                val randomIndex = (0..20).random()
+                val randomIndex = (0..10).random()
                 liveData.postValue(EarthCameraAppState.Success(pictureOfEarth[randomIndex]))
             }
 

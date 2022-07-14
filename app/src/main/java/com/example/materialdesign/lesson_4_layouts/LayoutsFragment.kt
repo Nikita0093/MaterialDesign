@@ -8,9 +8,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.materialdesign.R
 import com.example.materialdesign.databinding.FragmentLayoutsBinding
-import com.example.materialdesign.lesson_4_layouts.fragments.ConstraintFragment
-import com.example.materialdesign.lesson_4_layouts.fragments.CoordinatorFragment
-import com.example.materialdesign.lesson_4_layouts.fragments.MotionFragment
+import com.example.materialdesign.lesson_4_layouts.fragments.constraint.ConstraintFragment
+import com.example.materialdesign.lesson_4_layouts.fragments.coordinator.CoordinatorFragment
+import com.example.materialdesign.lesson_4_layouts.fragments.motion.MotionFragment
 
 
 class LayoutsFragment : Fragment() {

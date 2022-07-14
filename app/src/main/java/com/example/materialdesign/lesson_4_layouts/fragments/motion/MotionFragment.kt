@@ -1,19 +1,18 @@
-package com.example.materialdesign.lesson_4_layouts.fragments
+package com.example.materialdesign.lesson_4_layouts.fragments.motion
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.materialdesign.databinding.FragmentConstraintBinding
-import com.example.materialdesign.databinding.FragmentCoordinatorBinding
+import com.example.materialdesign.databinding.FragmentMotionBinding
 
 
-class CoordinatorFragment : Fragment() {
+class MotionFragment : Fragment() {
 
 
-    private var _binding: FragmentCoordinatorBinding? = null
-    private val binding: FragmentCoordinatorBinding
+    private var _binding: FragmentMotionBinding? = null
+    private val binding: FragmentMotionBinding
         get() = _binding!!
 
 
@@ -22,7 +21,7 @@ class CoordinatorFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentCoordinatorBinding.inflate(inflater, container, false)
+        _binding = FragmentMotionBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -36,7 +35,7 @@ class CoordinatorFragment : Fragment() {
     companion object {
 
         @JvmStatic
-        fun newInstance() = CoordinatorFragment()
+        fun newInstance() = MotionFragment()
     }
 
     override fun onDestroy() {
