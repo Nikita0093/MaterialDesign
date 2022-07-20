@@ -10,6 +10,7 @@ import com.example.materialdesign.databinding.FragmentViewpagerApiBinding
 import com.example.materialdesign.lesson3.MarsFragment
 import com.example.materialdesign.lesson3.SolarSystemFragment
 import com.example.materialdesign.lesson_4_layouts.LayoutsFragment
+import com.example.materialdesign.lesson_5_animations.AnimationsFragment
 
 
 class ViewPagerApiFragment : Fragment() {
@@ -47,10 +48,10 @@ class ViewPagerApiFragment : Fragment() {
                         R.id.mainContainer,
                         LayoutsFragment.newInstance()).addToBackStack(" ").commit()
 
-                R.id.bottom_app_mars -> requireActivity().supportFragmentManager.beginTransaction()
+                R.id.bottom_app_animations -> requireActivity().supportFragmentManager.beginTransaction()
                     .replace(
                         R.id.mainContainer,
-                        MarsFragment.newInstance()
+                        AnimationsFragment.newInstance()
                     ).addToBackStack(" ").commit()
 
                 R.id.bottom_app_solar -> requireActivity().supportFragmentManager.beginTransaction()
