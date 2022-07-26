@@ -11,6 +11,7 @@ import com.example.materialdesign.lesson3.MarsFragment
 import com.example.materialdesign.lesson3.SolarSystemFragment
 import com.example.materialdesign.lesson_4_layouts.LayoutsFragment
 import com.example.materialdesign.lesson_5_animations.AnimationsFragment
+import com.example.materialdesign.lesson_6.RecyclerFragment
 
 
 class ViewPagerApiFragment : Fragment() {
@@ -54,10 +55,10 @@ class ViewPagerApiFragment : Fragment() {
                         AnimationsFragment.newInstance()
                     ).addToBackStack(" ").commit()
 
-                R.id.bottom_app_solar -> requireActivity().supportFragmentManager.beginTransaction()
+                R.id.bottom_app_recycle -> requireActivity().supportFragmentManager.beginTransaction()
                     .replace(
                         R.id.mainContainer,
-                        SolarSystemFragment.newInstance()
+                        RecyclerFragment.newInstance()
                     ).addToBackStack(" ").commit()
 
             }

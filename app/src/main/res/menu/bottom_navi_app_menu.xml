@@ -16,10 +16,10 @@
     </item>
 
     <item
-        android:id="@+id/bottom_app_solar"
+        android:id="@+id/bottom_app_recycle"
         android:enabled="true"
-        android:icon="@drawable/ic_solar_system"
-        android:title="@string/solar">
+        android:icon="@drawable/ic_baseline_recycler"
+        android:title="@string/recycler">
 
     </item>
 

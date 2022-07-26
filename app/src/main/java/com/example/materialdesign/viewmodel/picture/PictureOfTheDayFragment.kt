@@ -44,7 +44,6 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer {
             renderData(it)
 
@@ -185,7 +184,6 @@ class PictureOfTheDayFragment : Fragment() {
             R.id.app_bar_fav ->
                 Toast.makeText((requireContext() as MainActivity), "Test2", Toast.LENGTH_LONG)
                     .show()
-
 
 
             android.R.id.home -> {
