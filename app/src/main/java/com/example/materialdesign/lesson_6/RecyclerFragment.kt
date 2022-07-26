@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.materialdesign.databinding.FragmentRecyclerBinding
 import com.example.materialdesign.utils.TYPE_EARTH
 import com.example.materialdesign.utils.TYPE_MARS
+import com.example.materialdesign.utils.TYPE_TITLE
 
 
 class RecyclerFragment : Fragment() {
@@ -32,18 +33,12 @@ class RecyclerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val list = arrayListOf(
-            Data("Earth", "Earth des", TYPE_EARTH),
+            Data("Title", " ", TYPE_TITLE),
             Data("Mars", "Mars des", TYPE_MARS),
             Data("Earth", "Earth des", TYPE_EARTH),
+            Data("Title", " ", TYPE_TITLE),
             Data("Mars", "Mars des", TYPE_MARS),
-            Data("Earth", "Earth des", TYPE_EARTH),
-            Data("Mars", "Mars des", TYPE_MARS),
-            Data("Earth", "Earth des", TYPE_EARTH),
-            Data("Mars", "Mars des", TYPE_MARS),
-            Data("Earth", "Earth des", TYPE_EARTH),
-            Data("Mars", "Mars des", TYPE_MARS),
-            Data("Earth", "Earth des", TYPE_EARTH),
-            Data("Mars", "Mars des", TYPE_MARS),
+            Data("Earth", "Earth des", TYPE_EARTH)
         )
 
         binding.recyclerView.adapter = RecyclerAdapter(list)

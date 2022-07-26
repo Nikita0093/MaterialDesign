@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.materialdesign.databinding.FragmentRecyclerEarthBinding
 import com.example.materialdesign.databinding.FragmentRecyclerMarsBinding
+import com.example.materialdesign.databinding.FragmentRecyclerTitleBinding
 import com.example.materialdesign.utils.TYPE_EARTH
 import com.example.materialdesign.utils.TYPE_MARS
+import com.example.materialdesign.utils.TYPE_TITLE
 
 class RecyclerAdapter(var list: List<Data>) : RecyclerView.Adapter<BaseViewHolder>() {
 
@@ -27,6 +29,12 @@ class RecyclerAdapter(var list: List<Data>) : RecyclerView.Adapter<BaseViewHolde
                 val view = FragmentRecyclerMarsBinding.inflate(LayoutInflater.from(parent.context))
                 return MarsViewHolder(view.root)
             }
+
+            TYPE_TITLE -> {
+                val view = FragmentRecyclerTitleBinding.inflate(LayoutInflater.from(parent.context))
+                return TitleViewHolder(view.root)
+            }
+
             else -> {
                 val view = FragmentRecyclerEarthBinding.inflate(LayoutInflater.from(parent.context))
                 return EarthViewHolder(view.root)
@@ -56,6 +64,16 @@ class RecyclerAdapter(var list: List<Data>) : RecyclerView.Adapter<BaseViewHolde
         override fun myBind(data: Data) {
             FragmentRecyclerMarsBinding.bind(itemView).apply {
                 title.text = data.dataTitle
+            }
+
+        }
+
+    }
+
+    class TitleViewHolder(view: View) : BaseViewHolder(view) {
+        override fun myBind(data: Data) {
+            FragmentRecyclerTitleBinding.bind(itemView).apply {
+                header.text = data.dataTitle
             }
 
         }
