@@ -15,35 +15,35 @@ import com.example.materialdesign.utils.TYPE_TITLE
 class RecyclerAdapter(private var onListItemClickListener: OnListItemClickListener) :
     RecyclerView.Adapter<BaseViewHolder>() {
 
-    private lateinit var list: List<Data>
+    private lateinit var list: MutableList<Pair<Data, Boolean>>
 
-    fun setList(newList: List<Data>) {
+    fun setList(newList: List<Pair<Data, Boolean>>) {
         list = newList.toMutableList()
     }
 
-    fun setAddToList(newList: List<Data>, position: Int) {
+    fun setAddToList(newList: List<Pair<Data, Boolean>>, position: Int) {
         list = newList.toMutableList()
         notifyItemChanged(position)
     }
 
-    fun setRemoveToList(newList: List<Data>, position: Int) {
+    fun setRemoveToList(newList: List<Pair<Data, Boolean>>, position: Int) {
         list = newList.toMutableList()
         notifyItemRemoved(position)
     }
 
-    fun setMoveUpList(newList: List<Data>, position: Int) {
+    fun setMoveUpList(newList: List<Pair<Data, Boolean>>, position: Int) {
         list = newList.toMutableList()
         notifyItemMoved(position, position - 1)
     }
 
-    fun setMoveDownList(newList: List<Data>, position: Int) {
+    fun setMoveDownList(newList: List<Pair<Data, Boolean>>, position: Int) {
         list = newList.toMutableList()
         notifyItemMoved(position, position + 1)
     }
 
 
     override fun getItemViewType(position: Int): Int {
-        return list[position].type
+        return list[position].first.type
     }
 
 
@@ -80,18 +80,18 @@ class RecyclerAdapter(private var onListItemClickListener: OnListItemClickListen
 
 
     inner class EarthViewHolder(view: View) : BaseViewHolder(view) {
-        override fun myBind(data: Data) {
+        override fun myBind(data: Pair<Data, Boolean>) {
             val binding = FragmentRecyclerEarthBinding.bind(itemView)
-            binding.title.text = data.dataTitle
-            binding.descriptionTextView.text = data.dataDescription
+            binding.title.text = data.first.dataTitle
+            binding.descriptionTextView.text = data.first.dataDescription
         }
 
     }
 
     inner class MarsViewHolder(view: View) : BaseViewHolder(view) {
-        override fun myBind(data: Data) {
+        override fun myBind(data: Pair<Data, Boolean>) {
             FragmentRecyclerMarsBinding.bind(itemView).apply {
-                title.text = data.dataTitle
+                title.text = data.first.dataTitle
                 addItemImageView.setOnClickListener {
                     onListItemClickListener.onAddBtnClick(layoutPosition)
 
@@ -112,6 +112,15 @@ class RecyclerAdapter(private var onListItemClickListener: OnListItemClickListen
 
                 }
 
+                marsImageView.setOnClickListener {
+                    list[layoutPosition] = list[layoutPosition].let {
+                       it.first to !it.second
+                   }
+                    marsDescriptionTextView.visibility = if (list[layoutPosition].second) View.VISIBLE else View.GONE
+
+                    notifyItemChanged(layoutPosition)
+                }
+
 
             }
 
@@ -120,9 +129,9 @@ class RecyclerAdapter(private var onListItemClickListener: OnListItemClickListen
     }
 
     inner class TitleViewHolder(view: View) : BaseViewHolder(view) {
-        override fun myBind(data: Data) {
+        override fun myBind(data: Pair<Data, Boolean>) {
             FragmentRecyclerTitleBinding.bind(itemView).apply {
-                header.text = data.dataTitle
+                header.text = data.first.dataTitle
             }
 
         }

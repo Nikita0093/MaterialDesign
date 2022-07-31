@@ -22,12 +22,12 @@ class RecyclerFragment : Fragment(), OnListItemClickListener {
     private lateinit var adapter: RecyclerAdapter
 
     private val list = arrayListOf(
-        Data("Title", " ", TYPE_TITLE),
-        Data("Mars", "Mars des", TYPE_MARS),
-        Data("Earth", "Earth des", TYPE_EARTH),
-        Data("Earth", "Earth des", TYPE_EARTH),
-        Data("Mars", "Mars des", TYPE_MARS),
-        Data("Earth", "Earth des", TYPE_EARTH)
+        Pair(Data("Title", " ", TYPE_TITLE), false),
+        Pair(Data("Mars", "Mars des", TYPE_MARS), false),
+        Pair(Data("Earth", "Earth des", TYPE_EARTH), false),
+        Pair(Data("Earth", "Earth des", TYPE_EARTH), false),
+        Pair(Data("Mars", "Mars des", TYPE_MARS), false),
+        Pair(Data("Earth", "Earth des", TYPE_EARTH), false)
     )
 
 
@@ -70,7 +70,7 @@ class RecyclerFragment : Fragment(), OnListItemClickListener {
 
     override fun onAddBtnClick(position: Int) {
         androidx.transition.TransitionManager.beginDelayedTransition(binding.root)
-        list.add(position, Data("Mars", "Mars des", TYPE_MARS))
+        list.add(position, Pair(Data("Mars", "Mars des", TYPE_MARS), false))
         adapter.setAddToList(list, position)
 
     }
