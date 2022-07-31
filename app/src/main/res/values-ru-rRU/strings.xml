@@ -17,4 +17,6 @@
     <string name="secondary_menu">Второе меню</string>
     <string name="normal_theme">Основная тема</string>
     <string name="colorblind_theme">Тема для дальтоников</string>
+    <string name="animations">Анимации</string>
+    <string name="title">Заголовок</string>
 </resources>

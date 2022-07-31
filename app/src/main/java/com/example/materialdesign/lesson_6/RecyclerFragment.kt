@@ -11,12 +11,23 @@ import com.example.materialdesign.utils.TYPE_MARS
 import com.example.materialdesign.utils.TYPE_TITLE
 
 
-class RecyclerFragment : Fragment() {
+class RecyclerFragment : Fragment(), OnListItemClickListener {
 
 
     private var _binding: FragmentRecyclerBinding? = null
     private val binding: FragmentRecyclerBinding
         get() = _binding!!
+
+    private lateinit var adapter: RecyclerAdapter
+
+    private val list = arrayListOf(
+        Data("Title", " ", TYPE_TITLE),
+        Data("Mars", "Mars des", TYPE_MARS),
+        Data("Earth", "Earth des", TYPE_EARTH),
+        Data("Title", " ", TYPE_TITLE),
+        Data("Mars", "Mars des", TYPE_MARS),
+        Data("Earth", "Earth des", TYPE_EARTH)
+    )
 
 
     override fun onCreateView(
@@ -32,16 +43,10 @@ class RecyclerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val list = arrayListOf(
-            Data("Title", " ", TYPE_TITLE),
-            Data("Mars", "Mars des", TYPE_MARS),
-            Data("Earth", "Earth des", TYPE_EARTH),
-            Data("Title", " ", TYPE_TITLE),
-            Data("Mars", "Mars des", TYPE_MARS),
-            Data("Earth", "Earth des", TYPE_EARTH)
-        )
 
-        binding.recyclerView.adapter = RecyclerAdapter(list)
+        adapter = RecyclerAdapter(this)
+        adapter.setList(list)
+        binding.recyclerView.adapter = adapter
 
 
     }
@@ -56,5 +61,23 @@ class RecyclerFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onItemClick(data: Data) {
+
+    }
+
+    override fun onAddBtnClick(position: Int) {
+        androidx.transition.TransitionManager.beginDelayedTransition(binding.root)
+        list.add(position, Data("Mars", "Mars des", TYPE_MARS))
+        adapter.setAddToList(list, position)
+
+    }
+
+    override fun onRemoveBtnClick(position: Int) {
+        androidx.transition.TransitionManager.beginDelayedTransition(binding.root)
+        list.removeAt(position)
+        adapter.setRemoveToList(list, position)
+
     }
 }

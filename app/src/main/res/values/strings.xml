@@ -117,7 +117,7 @@
         "when a user tries to pick up one of cards.\n\n"</string>
     <string name="plus" translatable="false">+</string>
     <string name="animations">Animations</string>
-    <string name="button_test">Button Test</string>
-    <string name="recycler">Recycler</string>
+    <string name="button_test" translatable="false">Button Test</string>
+    <string name="recycler" translatable="false">Recycler</string>
     <string name="title">Title</string>
 </resources>

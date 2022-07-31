@@ -1,5 +1,6 @@
 package com.example.materialdesign.lesson_6
 
+import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +12,24 @@ import com.example.materialdesign.utils.TYPE_EARTH
 import com.example.materialdesign.utils.TYPE_MARS
 import com.example.materialdesign.utils.TYPE_TITLE
 
-class RecyclerAdapter(var list: List<Data>) : RecyclerView.Adapter<BaseViewHolder>() {
+class RecyclerAdapter(private var onListItemClickListener: OnListItemClickListener) :
+    RecyclerView.Adapter<BaseViewHolder>() {
+
+    private lateinit var list: List<Data>
+
+    fun setList(newList: List<Data>) {
+        list = newList
+    }
+
+    fun setAddToList(newList: List<Data>, position: Int) {
+        list = newList
+        notifyItemChanged(position)
+    }
+
+    fun setRemoveToList(newList: List<Data>, position: Int) {
+        list = newList
+        notifyItemRemoved(position)
+    }
 
 
     override fun getItemViewType(position: Int): Int {
@@ -51,7 +69,7 @@ class RecyclerAdapter(var list: List<Data>) : RecyclerView.Adapter<BaseViewHolde
     }
 
 
-    class EarthViewHolder(view: View) : BaseViewHolder(view) {
+    inner class EarthViewHolder(view: View) : BaseViewHolder(view) {
         override fun myBind(data: Data) {
             val binding = FragmentRecyclerEarthBinding.bind(itemView)
             binding.title.text = data.dataTitle
@@ -60,17 +78,27 @@ class RecyclerAdapter(var list: List<Data>) : RecyclerView.Adapter<BaseViewHolde
 
     }
 
-    class MarsViewHolder(view: View) : BaseViewHolder(view) {
+    inner class MarsViewHolder(view: View) : BaseViewHolder(view) {
         override fun myBind(data: Data) {
             FragmentRecyclerMarsBinding.bind(itemView).apply {
                 title.text = data.dataTitle
+                addItemImageView.setOnClickListener {
+                    onListItemClickListener.onAddBtnClick(layoutPosition)
+
+                }
+                removeItemImageView.setOnClickListener {
+                    TransitionManager.beginDelayedTransition(root)
+                    onListItemClickListener.onRemoveBtnClick(layoutPosition)
+                }
+
+
             }
 
         }
 
     }
 
-    class TitleViewHolder(view: View) : BaseViewHolder(view) {
+    inner class TitleViewHolder(view: View) : BaseViewHolder(view) {
         override fun myBind(data: Data) {
             FragmentRecyclerTitleBinding.bind(itemView).apply {
                 header.text = data.dataTitle
