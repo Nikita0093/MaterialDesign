@@ -18,17 +18,27 @@ class RecyclerAdapter(private var onListItemClickListener: OnListItemClickListen
     private lateinit var list: List<Data>
 
     fun setList(newList: List<Data>) {
-        list = newList
+        list = newList.toMutableList()
     }
 
     fun setAddToList(newList: List<Data>, position: Int) {
-        list = newList
+        list = newList.toMutableList()
         notifyItemChanged(position)
     }
 
     fun setRemoveToList(newList: List<Data>, position: Int) {
-        list = newList
+        list = newList.toMutableList()
         notifyItemRemoved(position)
+    }
+
+    fun setMoveUpList(newList: List<Data>, position: Int) {
+        list = newList.toMutableList()
+        notifyItemMoved(position, position - 1)
+    }
+
+    fun setMoveDownList(newList: List<Data>, position: Int) {
+        list = newList.toMutableList()
+        notifyItemMoved(position, position + 1)
     }
 
 
@@ -89,6 +99,17 @@ class RecyclerAdapter(private var onListItemClickListener: OnListItemClickListen
                 removeItemImageView.setOnClickListener {
                     TransitionManager.beginDelayedTransition(root)
                     onListItemClickListener.onRemoveBtnClick(layoutPosition)
+                }
+
+                moveItemUp.setOnClickListener {
+                    onListItemClickListener.onMoveUp(layoutPosition)
+
+
+                }
+
+                moveItemDown.setOnClickListener {
+                    onListItemClickListener.onMoveDown(layoutPosition)
+
                 }
 
 

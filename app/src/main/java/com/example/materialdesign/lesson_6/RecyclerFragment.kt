@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.materialdesign.databinding.FragmentRecyclerBinding
 import com.example.materialdesign.utils.TYPE_EARTH
@@ -24,7 +25,7 @@ class RecyclerFragment : Fragment(), OnListItemClickListener {
         Data("Title", " ", TYPE_TITLE),
         Data("Mars", "Mars des", TYPE_MARS),
         Data("Earth", "Earth des", TYPE_EARTH),
-        Data("Title", " ", TYPE_TITLE),
+        Data("Earth", "Earth des", TYPE_EARTH),
         Data("Mars", "Mars des", TYPE_MARS),
         Data("Earth", "Earth des", TYPE_EARTH)
     )
@@ -78,6 +79,34 @@ class RecyclerFragment : Fragment(), OnListItemClickListener {
         androidx.transition.TransitionManager.beginDelayedTransition(binding.root)
         list.removeAt(position)
         adapter.setRemoveToList(list, position)
+
+    }
+
+    override fun onMoveUp(position: Int) {
+        if (position > 1) {
+            list.removeAt(position).apply {
+                list.add(position - 1, this)
+                adapter.setMoveUpList(list, position)
+            }
+
+        } else {
+            Toast.makeText(context, "Невозможно", Toast.LENGTH_SHORT).show()
+
+        }
+
+
+    }
+
+    override fun onMoveDown(position: Int) {
+        if (position < list.size - 1) {
+            list.removeAt(position).apply {
+                list.add(position + 1, this)
+                adapter.setMoveDownList(list, position)
+            }
+
+        } else {
+            Toast.makeText(context, "Невозможно", Toast.LENGTH_SHORT).show()
+        }
 
     }
 }
