@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.materialdesign.databinding.FragmentRecyclerBinding
 import com.example.materialdesign.utils.TYPE_EARTH
 import com.example.materialdesign.utils.TYPE_MARS
@@ -48,6 +49,8 @@ class RecyclerFragment : Fragment(), OnListItemClickListener {
         adapter = RecyclerAdapter(this)
         adapter.setList(list)
         binding.recyclerView.adapter = adapter
+
+        ItemTouchHelper(ItemTouchHelperCallback(adapter)).attachToRecyclerView(binding.recyclerView)
 
 
     }
@@ -108,5 +111,17 @@ class RecyclerFragment : Fragment(), OnListItemClickListener {
             Toast.makeText(context, "Невозможно", Toast.LENGTH_SHORT).show()
         }
 
+    }
+
+    override fun onMove(fromPosition: Int, toPosition: Int) {
+        if (toPosition >= 1 && toPosition <= list.size - 1) {
+            list.removeAt(fromPosition).apply {
+                list.add(toPosition, this)
+                adapter.setMoveList(list, fromPosition, toPosition)
+
+            }
+        } else {
+            Toast.makeText(context, "Невозможно", Toast.LENGTH_SHORT).show()
+        }
     }
 }

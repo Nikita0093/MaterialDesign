@@ -8,4 +8,5 @@ interface OnListItemClickListener {
     fun onRemoveBtnClick(position: Int)
     fun onMoveUp(position: Int)
     fun onMoveDown(position: Int)
+    fun onMove(fromPosition: Int, toPosition: Int)
 }

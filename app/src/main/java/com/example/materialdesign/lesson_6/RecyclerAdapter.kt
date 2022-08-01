@@ -1,5 +1,6 @@
 package com.example.materialdesign.lesson_6
 
+import android.graphics.Color
 import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +14,7 @@ import com.example.materialdesign.utils.TYPE_MARS
 import com.example.materialdesign.utils.TYPE_TITLE
 
 class RecyclerAdapter(private var onListItemClickListener: OnListItemClickListener) :
-    RecyclerView.Adapter<BaseViewHolder>() {
+    RecyclerView.Adapter<BaseViewHolder>(), ItemTouchHelperCallback.ItemTouchHelperAdapter {
 
     private lateinit var list: MutableList<Pair<Data, Boolean>>
 
@@ -39,6 +40,11 @@ class RecyclerAdapter(private var onListItemClickListener: OnListItemClickListen
     fun setMoveDownList(newList: List<Pair<Data, Boolean>>, position: Int) {
         list = newList.toMutableList()
         notifyItemMoved(position, position + 1)
+    }
+
+    fun setMoveList(newList: List<Pair<Data, Boolean>>, fromPosition: Int, toPosition: Int) {
+        list = newList.toMutableList()
+        notifyItemMoved(fromPosition, toPosition)
     }
 
 
@@ -79,16 +85,24 @@ class RecyclerAdapter(private var onListItemClickListener: OnListItemClickListen
     }
 
 
-    inner class EarthViewHolder(view: View) : BaseViewHolder(view) {
+    inner class EarthViewHolder(view: View) : BaseViewHolder(view), ItemTouchHelperCallback.ItemTouchHelperViewHolder {
         override fun myBind(data: Pair<Data, Boolean>) {
             val binding = FragmentRecyclerEarthBinding.bind(itemView)
             binding.title.text = data.first.dataTitle
             binding.descriptionTextView.text = data.first.dataDescription
         }
 
+        override fun onItemSelected() {
+            itemView.setBackgroundColor(Color.GRAY)
+        }
+
+        override fun onItemClear() {
+            itemView.setBackgroundColor(0)
+        }
+
     }
 
-    inner class MarsViewHolder(view: View) : BaseViewHolder(view) {
+    inner class MarsViewHolder(view: View) : BaseViewHolder(view), ItemTouchHelperCallback.ItemTouchHelperViewHolder {
         override fun myBind(data: Pair<Data, Boolean>) {
             FragmentRecyclerMarsBinding.bind(itemView).apply {
                 title.text = data.first.dataTitle
@@ -114,15 +128,25 @@ class RecyclerAdapter(private var onListItemClickListener: OnListItemClickListen
 
                 marsImageView.setOnClickListener {
                     list[layoutPosition] = list[layoutPosition].let {
-                       it.first to !it.second
-                   }
-                    marsDescriptionTextView.visibility = if (list[layoutPosition].second) View.VISIBLE else View.GONE
+                        it.first to !it.second
+                    }
+                    marsDescriptionTextView.visibility =
+                        if (list[layoutPosition].second) View.VISIBLE else View.GONE
 
                     notifyItemChanged(layoutPosition)
                 }
 
 
             }
+
+        }
+
+        override fun onItemSelected() {
+            itemView.setBackgroundColor(Color.GRAY)
+        }
+
+        override fun onItemClear() {
+            itemView.setBackgroundColor(Color.WHITE)
 
         }
 
@@ -135,6 +159,16 @@ class RecyclerAdapter(private var onListItemClickListener: OnListItemClickListen
             }
 
         }
+
+    }
+
+    override fun onItemMove(fromPosition: Int, toPosition: Int) {
+        onListItemClickListener.onMove(fromPosition, toPosition)
+
+    }
+
+    override fun onItemDismiss(position: Int) {
+        onListItemClickListener.onRemoveBtnClick(position)
 
     }
 }
